@@ -282,6 +282,8 @@ if [[ $VERBOSE -eq 1 ]]; then
 fi
 docker run -it --rm \
     --privileged \
+    --device=/dev/bus/usb:/dev/bus/usb \
+    -v /etc/udev/rules.d/99-realsense-libusb.rules:/etc/udev/rules.d/99-realsense-libusb.rules:ro \
     --network host \
     --ipc=host \
     ${DOCKER_ARGS[@]} \
