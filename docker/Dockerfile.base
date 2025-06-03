@@ -142,8 +142,9 @@ RUN --mount=type=cache,target=/var/cache/apt \
 
 # Downgrade to setuptools < 70.0.0
 # https://github.com/pypa/setuptools/issues/4483
-RUN python3 -m pip install -U \
-    setuptools==65.7.0
+# Upgraded back by Hassan. We get error during build if it is not up to date.
+RUN python3 -m pip install --upgrade pip setuptools wheel packaging
+
 
 # Python3 PIP buildtools
 RUN python3 -m pip install -U \
